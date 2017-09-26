@@ -21,6 +21,7 @@ exports.run = async (client, message, args, level) => { // eslint-disable-line n
     name: "ishiatusover",
     category: "Pearl Fun",
     description: "Checks to see if Steven Universe has aired yet.",
+      //Does Nothing of the sort. Randomly post image from set array when called. 
     usage: ""
   };
   
