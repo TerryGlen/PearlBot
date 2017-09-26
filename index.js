@@ -36,8 +36,8 @@ client.settings = new Enmap({name: "settings", persistent: true});
 
 //Holds the Pearl Points that users have and the amount of points they can distribute to 
 //other users. 
-this.pearlpoints =  new Enmap({name: "pearlpoints", persistent: true});
-this.givepoints =  new Enmap({name: "givepoints", persistent: true});
+client.pearlpoints =  new Enmap({name: "pearlpoints", persistent: true});
+client.givepoints =  new Enmap({name: "givepoints", persistent: true});
 // We're doing real fancy node 8 async/await stuff here, and to do that
 // we need to wrap stuff in an anonymous function. It's annoying but it works.
 
