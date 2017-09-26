@@ -1,2 +1,5 @@
 # Guide Bot Fork
-Discord bot based of the Idiot's Guide guidebot. 
+Discord bot based heavily off the Idiot's Guide guidebot. 
+
+
+
