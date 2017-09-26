@@ -83,7 +83,64 @@ module.exports = (client) => {
     return text;
   };
 
+ // Pearl Bot Points Mointor
+ 
+ /* client.pointsMonitor = (client, message) => {
+  if (message.channel.type !=='text') return;
+  const settings = client.settings.get(message.guild.id);
+  if (message.content.startsWith(settings.prefix)) return;
+  const score = client.points.get(message.author.id) || { points: 0, level: 0 };
+  score.points++;
+  const curLevel = Math.floor(0.1 * Math.sqrt(score.points));
+  if (score.level < curLevel) {
+    message.reply(`You've leveled up to level **${curLevel}**! Ain't that dandy?`);
+    score.level = curLevel;
+  }
 
+
+  client.points.set(message.author.id, score);
+}; */
+
+//Function manages awarding of Pearl Points from one user to another. Refreshes points availabe to award every 24 hours. 
+client.cangivepoints = (client, message, value) => {// eslint-disable-line no-unused-vars
+  var now = Date.now();
+  var msinaDay = 24 * 60 * 60 * 1000;
+  var msinaHour = 60 * 60 * 1000;
+  
+  var givespearl = client.givepoints.get(message.author.id) || { points: 100, date: now };
+  var then = givespearl.date;
+  // var difference = then - now; //backwards
+  var difference_ms = now - then;
+
+  var daysSince = Math.floor(difference_ms / msinaDay);
+  var waittime = msinaDay - difference_ms;
+  
+  //Refreshes Users Points to Give after every 24 hours
+  if (daysSince >=1){
+      givespearl = {points: 100, date: now }
+  };
+
+  var avalpoints = givespearl.points
+  //Checks if user has enough points available to give
+  //If not returns false and exits function
+  if(avalpoints < value){
+          
+          if(avalpoints === 0){
+
+            message.channel.send("You have no Pearl Points left.\nPlease wait: " + (Math.floor(waittime/(1000*60*60))) + ":" + (Math.floor(waittime/(1000*60))%60) + ":" +(Math.floor(waittime/1000)%60)+ "Test 2" )
+            client.givepoints.set(message.author.id, givespearl);
+            return false;
+          }
+          message.channel.send("You have only have " + avalpoints + " points to give." )
+          client.givepoints.set(message.author.id, givespearl);
+          return false;
+      }
+  //Subtracts points given from points available to give and updates the current point value
+  givespearl.points = avalpoints - value;
+  client.givepoints.set(message.author.id, givespearl);   
+  return true;   
+
+  };
   /* MISCELANEOUS NON-CRITICAL FUNCTIONS */
   
   // EXTENDING NATIVE TYPES IS BAD PRACTICE. Why? Because if JavaScript adds this
