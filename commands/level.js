@@ -7,7 +7,7 @@ exports.run = async (client, message) => {
       hidden: false,
       guildOnly: true,
       aliases: [],
-      permLevel: 0
+      permLevel: "User"
     };
     
     exports.help = {

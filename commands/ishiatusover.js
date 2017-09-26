@@ -14,7 +14,7 @@ exports.run = async (client, message, args, level) => { // eslint-disable-line n
     enabled: true,
     guildOnly: false,
     aliases: ["iho"],
-    permLevel: 0
+    permLevel: "User"
   };
   
   exports.help = {

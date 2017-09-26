@@ -28,7 +28,7 @@ exports.conf = {
     enabled: true,
     guildOnly: false,
     aliases: ["pearlpoints", "pearlpoints"],
-    permLevel: 0
+    permLevel: "User"
 };
 
 exports.help = {

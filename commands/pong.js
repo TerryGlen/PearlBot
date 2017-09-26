@@ -7,12 +7,12 @@ exports.conf = {
   enabled: true,
   guildOnly: false,
   aliases: [],
-  permLevel: 0
+  permLevel: "User"
 };
 
 exports.help = {
   name: "pong",
   category: "Miscelaneous",
-  description: "Pearl is a smartass",
+  description: "Pearl the pong champion.",
   usage: "pong"
 };
