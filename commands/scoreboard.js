@@ -5,7 +5,8 @@ exports.run = async (client, message, args, level) => { // eslint-disable-line n
   var stringis = ('= Leaderboard =\n');
 
 
-  //Turns PearlPoints Enmap to Array then sorts in Descending order. 
+  // Turns Map into an Array then sorts in Descending order.
+  // scoreboard[user.id][PearlPoint Object]
   scoreboard = Array.from(client.pearlpoints).sort(function (a, b) { return a[1].points < b[1].points });
   size_array = scoreboard.length;
 
